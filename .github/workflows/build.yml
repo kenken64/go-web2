@@ -1,0 +1,68 @@
+name : Golang web example
+on:
+    push:
+        branches:
+        - 'v1.0'
+        tags:
+        - 'latest'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create tag
+        uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: "latest"
+          force_push_tag: true
+          message: "Latest release"
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          skipIfReleaseExists: true
+          tag: "latest"
+          artifacts: "release.tar.gz,foo/*.txt"
+          bodyFile: "body.md"
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+              {
+                "text": "DipSA41C CI/CD Assignment Submission",
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*Name* \nKenneth Phang                 *Matriculation* 123 \n*Email* \nfred@email.com               *Repository* <http://wwww> "
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "block_id": "section789",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment* \n<https://link-url-here.org> \n<https://link-url-here.org|Open application>"
+                      }
+                    ]
+                  }
+                ]
+              }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
