@@ -33,7 +33,7 @@ jobs:
         run: npm i -g @railway/cli
 
       - name: Deploy
-        run: RAILWAY_TOKEN=$RAILWAY_TOKEN railway up
+        run: RAILWAY_TOKEN=$RAILWAY_TOKEN railway up --service=goweb2
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
       - name: Send custom JSON data to Slack workflow
