@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    if: "!contains(github.event.head_commit.message, '#NORUN')"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,7 +43,7 @@ jobs:
         with:
           payload: |
               {
-                "text": "DipSA41C CI/CD Assignment Submission",
+                "text": "CI/CD Submission",
                 "blocks": [
                   {
                     "type": "section",
