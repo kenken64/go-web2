@@ -1,22 +1,42 @@
-# Github Actions CICD Workshop
+# Go-web Project
+
+```
+go mod init go-web2
+
+```
+
+```
+go mod tidy
+```
+
+```
+go build
+```
+
+```
+git merge v1.1
+```
+
+
+# Github Actions CICD Workshop for GoLang WebApp
 
 This is an individual workshop.
 
 Setup
 1. Create the following accounts if you don’t already have them
-a. GitHub - https://github.com/
-b. Railway - https://railway.app/ . 
+    a. GitHub - https://github.com/
+    b. Railway - https://railway.app/ . 
 
-Please use my promo code https://railway.app?referralCode=PTGdkj
-You will have to pay $5 a month for a subscription. You can cancel after the
-assignment.
+    Please use my promo code https://railway.app?referralCode=PTGdkj
+    You will have to pay $5 a month for a subscription. You can cancel after the
+    assignment.
 
-Another option is for 1 person to subscribe and a few of you share the
-Account.
+    Another option is for 1 person to subscribe and a few of you share the
+    Account.
 
-c. Join Slack channel - https://join.slack.com/t/bhutan-workshop/shared_invite/zt-28p878to4-v2kV1pFcb9aXTIJivuTa5g
+2. Join Slack channel - https://join.slack.com/t/bhutan-workshop/shared_invite/zt-28p878to4-v2kV1pFcb9aXTIJivuTa5g
 
-2. Download the Golang application source. You will be using this code base for the workshop. The lecturer will provide you with the download link during class.
+3. Download the Golang application source. You will be using this code base for the workshop. The lecturer will provide you with the download link during class.
 
 Create a git repository with this code. The initial visibility of your Git repository
 must be PRIVATE viz. no one else can access it except you. This is to prevent
@@ -90,25 +110,4 @@ https://api.slack.com/messaging/composing/layouts
 Submit the workshop by pushing it to your GitHub repository; this should be the
 same repository as your Slack notification.
 
-1 The purpose of this is to impress on you the consequences of bad software development habits when it comes to handling sensitive information. If you adopt bad habits, the repercussions can be felt not only by you, but your coworkers as well.Version 2
 
-
-
-# Go-web Project
-
-```
-go mod init go-web2
-
-```
-
-```
-go mod tidy
-```
-
-```
-go build
-```
-
-```
-git merge v1.1
-```
